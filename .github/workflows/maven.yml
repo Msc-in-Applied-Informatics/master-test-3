@@ -32,9 +32,6 @@ jobs:
 
     - name: Build Docker Image
       run: |
-          # login to GitHub Container Registry
           echo ${{ secrets.DOCKER_TOKEN }} | docker login -u msc-in-applied-informatics --password-stdin
-          # build image
-          docker build . --tag msc-in-applied-informatics/master-test-3:$(date +%Y-%m-%d)
-          # push image
+          docker build . --tag msc-in-applied-informatics/master-test-3:$(date +%Y-%m-%d) .
           docker push msc-in-applied-informatics/test:$(date +'%Y-%m-%d')
