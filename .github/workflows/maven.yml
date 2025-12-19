@@ -37,4 +37,4 @@ jobs:
           # build image
           docker build . --tag msc-in-applied-informatics/master-test-3:$(date +%Y-%m-%d)
           # push image
-          docker push nikosnikolaidis/test:$(date +'%Y-%m-%d')
+          docker push msc-in-applied-informatics/test:$(date +'%Y-%m-%d')
