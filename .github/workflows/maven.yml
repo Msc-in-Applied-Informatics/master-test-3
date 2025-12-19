@@ -31,4 +31,10 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Build Docker Image
-      run: docker build -t msc-in-applied-informatics/master-test-3:$(date +%Y-%m-%d) .
+      run: |
+          # login to GitHub Container Registry
+          echo ${{ secrets.DOCKER_TOKEN }} | docker login -u msc-in-applied-informatics --password-stdin
+          # build image
+          docker build . --tag msc-in-applied-informatics/master-test-3:$(date +%Y-%m-%d)
+          # push image
+          docker push nikosnikolaidis/test:$(date +'%Y-%m-%d')
